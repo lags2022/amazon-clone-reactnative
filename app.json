@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "amazon_clone",
-    "slug": "amazon_clone",
+    "slug": "amazon-clone",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,16 +15,28 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#ffffff",
+        "googleServicesFile": "./google-services.json"
+      },
+      "package": "com.melcabo.amazonclone"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "40a90e01-e017-492d-a885-ccac606dfc6f"
+      }
+    },
+    "owner": "melcabo",
+    "plugins": [
+      "@react-native-firebase/app"
+    ]
   }
 }
