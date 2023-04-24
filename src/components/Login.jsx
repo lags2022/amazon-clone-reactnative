@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Image } from "react-native";
 import auth from "@react-native-firebase/auth";
 
 GoogleSignin.configure({
@@ -8,26 +8,44 @@ GoogleSignin.configure({
     "972184727106-mo09ref0lhnt25i0q87jtub1vc2qvqki.apps.googleusercontent.com",
 });
 
-async function onGoogleButtonPress() {
-  // Check if your device supports Google Play
-  await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-  // Get the users ID token
-  const { idToken } = await GoogleSignin.signIn();
-
-  // Create a Google credential with the token
-  const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-  // Sign-in the user with the credential
-  return auth().signInWithCredential(googleCredential);
-}
-
 function Login() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [initializing, setInitialing] = useState(true);
+
+  const handleUserLogin = async () => {
+    // Check if your device supports Google Play
+    await GoogleSignin.hasPlayServices({
+      showPlayServicesUpdateDialog: true,
+    });
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+    // Sign-in the user with the credential
+    return auth()
+      .signInWithCredential(googleCredential)
+      .then(() => console.log("Login in Google"))
+      .catch((error) => console.log(error));
+  };
 
   const handleUserStateChanged = (us) => {
     setUser(us);
+    console.log("que");
     if (initializing) setInitialing(false);
+  };
+  console.log(user);
+
+  const handleUserLogout = async () => {
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      await auth().signOut();
+      setUser(null);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -39,17 +57,20 @@ function Login() {
 
   return (
     <>
-      <Button
-        title="Google Sign-In"
-        onPress={() =>
-          onGoogleButtonPress()
-            .then(() => console.log("Signed in with Google!"))
-            .catch((error) => console.log(error))
-        }
-      />
-      <View>
-        <Text>{user ? `Welcome ${user.email}` : "Login"}</Text>
-      </View>
+      {user ? (
+        <>
+          <Button title="Logout" onPress={handleUserLogout} />
+          <View style={{ alignItems: "center" }}>
+            <Text>{`Welcome ${user.displayName}`}</Text>
+            <Image
+              style={{ width: 50, height: 50 }}
+              source={{ uri: user.photoURL }}
+            />
+          </View>
+        </>
+      ) : (
+        <Button title="Google Sign-In" onPress={handleUserLogin} />
+      )}
     </>
   );
 }
