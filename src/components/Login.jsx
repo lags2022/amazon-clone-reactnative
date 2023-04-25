@@ -32,7 +32,6 @@ function Login() {
 
   const handleUserStateChanged = (us) => {
     setUser(us);
-    console.log("que");
     if (initializing) setInitialing(false);
   };
   console.log(user);

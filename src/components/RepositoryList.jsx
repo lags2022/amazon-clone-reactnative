@@ -1,5 +1,4 @@
-import { Text } from "react-native";
-import { FlatList } from "react-native";
+import { Text,FlatList } from "react-native";
 import RepositoryItem from "./RepositoryItem";
 import { useRepositories } from "../hooks/useRepositories";
 

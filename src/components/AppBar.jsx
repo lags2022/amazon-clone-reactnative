@@ -1,12 +1,12 @@
-import {
-  View,
-  StyleSheet,
-  TouchableWithoutFeedback,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from "react-native";
 import StyledText from "./StyledText";
 import theme from "../services/theme";
 import Constants from "expo-constants";
 import { Link, useLocation } from "react-router-native";
+import { selectItems } from "../redux/slice/basketSlice";
+import { useSelector } from "react-redux";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 
 const styles = StyleSheet.create({
   container: {
@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight + 10,
     paddingLeft: 10,
     flexDirection: "row",
+    justifyContent: "space-between",
   },
   text: {
     color: theme.appBar.textSecondary,
@@ -41,13 +42,21 @@ const AppBarTab = ({ children, to }) => {
 };
 
 function AppBar() {
+  const items = useSelector(selectItems);
+
   return (
     <View style={styles.container}>
-      <AppBarTab active to="/">
-        Products
-      </AppBarTab>
-      <AppBarTab active to="/signin">
-        Sign In
+      <View style={{ flexDirection: "row" }}>
+        <AppBarTab active to="/">
+          Products
+        </AppBarTab>
+        <AppBarTab active to="/signin">
+          Sign In
+        </AppBarTab>
+      </View>
+      <AppBarTab active to="/checkout">
+        <Text>{items.length}</Text>
+        <FontAwesomeIcon color="white" size={20} icon={faCartShopping} />
       </AppBarTab>
     </View>
   );
