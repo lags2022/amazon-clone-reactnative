@@ -19,6 +19,7 @@
     "@react-native-firebase/perf": "^17.4.2",
     "@react-native-google-signin/google-signin": "^9.0.2",
     "@reduxjs/toolkit": "^1.9.5",
+    "@stripe/stripe-react-native": "^0.27.0",
     "expo": "~48.0.11",
     "expo-dev-client": "~2.2.1",
     "expo-splash-screen": "~0.18.1",
@@ -30,7 +31,8 @@
     "react-router-native": "^6.10.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "react-native-dotenv": "^3.4.8"
   },
   "private": true
 }
