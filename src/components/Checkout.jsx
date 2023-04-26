@@ -1,4 +1,4 @@
-import { Text, FlatList, Button, Alert } from "react-native";
+import { Text, FlatList, Button, Alert, View } from "react-native";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectItems, selectTotal } from "../redux/slice/basketSlice";
@@ -51,7 +51,7 @@ function Checkout() {
       await fetchPaymentSheetParams();
 
     const { error } = await initPaymentSheet({
-      merchantDisplayName: "Example, Inc.",
+      merchantDisplayName: "Amazon Clone Inc",
       customerId: customer,
       customerEphemeralKeySecret: ephemeralKey,
       paymentIntentClientSecret: paymentIntent,
@@ -59,7 +59,7 @@ function Checkout() {
       //methods that complete payment after a delay, like SEPA Debit and Sofort.
       allowsDelayedPaymentMethods: false,
       defaultBillingDetails: {
-        name: "Jane Doe",
+        name: user.displayName,
       },
     });
     if (!error) {
@@ -107,6 +107,17 @@ function Checkout() {
           </RepositoryItem>
         )}
       />
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "space-between",
+          padding: 10,
+          backgroundColor: "#9CA3AF",
+        }}
+      >
+        <Text>Next Day Delivery $5.55</Text>
+        <Text>Total ${total}</Text>
+      </View>
       <Button
         disabled={!autenticated || !loading}
         title={!autenticated ? "Sign in to Checkout" : "Proceed to Checkout"}
