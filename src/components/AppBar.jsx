@@ -53,6 +53,9 @@ function AppBar() {
         <AppBarTab active to="/signin">
           Sign In
         </AppBarTab>
+        <AppBarTab active to="/orders">
+          Orders
+        </AppBarTab>
       </View>
       <AppBarTab active to="/checkout">
         <Text>{items.length}</Text>

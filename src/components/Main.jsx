@@ -5,6 +5,7 @@ import AppBar from "./AppBar";
 import { Routes, Route, Navigate } from "react-router-native";
 import Login from "./Login";
 import Checkout from "./Checkout";
+import Orders from "./Orders";
 
 export default function Main() {
   return (
@@ -13,6 +14,7 @@ export default function Main() {
       <Routes>
         <Route path="/" exact element={<RepositoryList />} />
         <Route path="/signin" exact element={<Login />} />
+        <Route path="/orders" exact element={<Orders />} />
         <Route path="/checkout" exact element={<Checkout />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
