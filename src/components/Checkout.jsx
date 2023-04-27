@@ -79,7 +79,7 @@ function Checkout() {
 
   useEffect(() => {
     user && initializePaymentSheet();
-  }, [user]);
+  }, [user, total]);
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged((user) => {
