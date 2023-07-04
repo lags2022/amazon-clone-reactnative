@@ -49,12 +49,18 @@ function Orders() {
   return (
     <>
       <View>
-        <Text>Your Orders</Text>
+        <Text className="text-white text-xl font-bold text-center my-2">
+          Your Orders
+        </Text>
 
         {user ? (
-          <Text>Orders {orders.length}</Text>
+          <Text className="text-white text-base font-semibold">
+            Orders {orders.length}
+          </Text>
         ) : (
-          <Text>Please sign in to see your orders</Text>
+          <Text className="text-white text-base font-semibold">
+            Please sign in to see your orders
+          </Text>
         )}
       </View>
       <FlatList

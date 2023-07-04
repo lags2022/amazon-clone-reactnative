@@ -55,12 +55,14 @@ function Login() {
   if (initializing) return null;
 
   return (
-    <>
+    <View className="flex-1 m-3">
       {user ? (
         <>
-          <Button title="Logout" onPress={handleUserLogout} />
+          <View className="w-1/2 mx-auto">
+            <Button title="Logout" onPress={handleUserLogout} />
+          </View>
           <View style={{ alignItems: "center" }}>
-            <Text>{`Welcome ${user.displayName}`}</Text>
+            <Text className="text-white font-bold my-3 text-base">{`Welcome ${user.displayName}`}</Text>
             <Image
               style={{ width: 50, height: 50 }}
               source={{ uri: user.photoURL }}
@@ -68,9 +70,11 @@ function Login() {
           </View>
         </>
       ) : (
-        <Button title="Google Sign-In" onPress={handleUserLogin} />
+        <View className="w-1/2 mx-auto">
+          <Button title="Google Sign-In" onPress={handleUserLogin} />
+        </View>
       )}
-    </>
+    </View>
   );
 }
 

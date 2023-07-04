@@ -107,22 +107,28 @@ function Checkout() {
           </RepositoryItem>
         )}
       />
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "space-between",
-          padding: 10,
-          backgroundColor: "#9CA3AF",
-        }}
-      >
-        <Text>Next Day Delivery $5.55</Text>
-        <Text>Total ${total}</Text>
+      <View className="mb-4">
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            padding: 10,
+            backgroundColor: "#9CA3AF",
+          }}
+        >
+          <Text>Next Day Delivery $5.55</Text>
+          <Text>Total ${total}</Text>
+        </View>
+        <View className="w-1/2 mx-auto">
+          <Button
+            disabled={!autenticated || !loading}
+            title={
+              !autenticated ? "Sign in to Checkout" : "Proceed to Checkout"
+            }
+            onPress={openPaymentSheet}
+          />
+        </View>
       </View>
-      <Button
-        disabled={!autenticated || !loading}
-        title={!autenticated ? "Sign in to Checkout" : "Proceed to Checkout"}
-        onPress={openPaymentSheet}
-      />
     </>
   );
 }

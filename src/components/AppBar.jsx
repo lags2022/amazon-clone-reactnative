@@ -34,7 +34,7 @@ const AppBarTab = ({ children, to }) => {
 
   return (
     <Link to={to} component={TouchableWithoutFeedback}>
-      <StyledText fontWeight="bold" style={textStyles}>
+      <StyledText className="text-lg" fontWeight="bold" style={textStyles}>
         {children}
       </StyledText>
     </Link>

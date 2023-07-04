@@ -4,13 +4,13 @@ import moment from "moment";
 
 function Order({ id, amount, amountShipping, items, timestamp, images }) {
   return (
-    <View style={{ padding: 10, borderWidth: 1, marginHorizontal: 5 }}>
+    <View className="border shadow-xl bg-white rounded-2xl mx-2" style={{ padding: 10, borderWidth: 1, marginHorizontal: 5 }}>
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <View>
-          <Text>
+          <Text className="text-black">
             Order Placed : {moment.unix(timestamp).format("DD MMMM YYYY")}
           </Text>
-          <Text style={{ marginBottom: 5 }}>
+          <Text className="text-black" style={{ marginBottom: 5 }}>
             Total : ${amount} - Delivery : ${amountShipping}
           </Text>
         </View>
@@ -19,8 +19,8 @@ function Order({ id, amount, amountShipping, items, timestamp, images }) {
             alignItems: "flex-end",
           }}
         >
-          <Text>Order # : {id.slice(0, 5)}...</Text>
-          <Text>{items.length} items</Text>
+          <Text className="text-black">Order # : {id.slice(0, 5)}...</Text>
+          <Text className="text-black">{items.length} items</Text>
         </View>
       </View>
 
