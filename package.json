@@ -21,6 +21,7 @@
     "@react-native-google-signin/google-signin": "^9.0.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@stripe/stripe-react-native": "^0.27.0",
+    "dotenv": "^16.3.1",
     "expo": "~48.0.18",
     "expo-dev-client": "~2.2.1",
     "expo-splash-screen": "~0.18.2",
@@ -31,7 +32,8 @@
     "react-native": "0.71.8",
     "react-native-svg": "^13.9.0",
     "react-redux": "^8.0.5",
-    "react-router-native": "^6.10.0"
+    "react-router-native": "^6.10.0",
+    "expo-constants": "~14.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
