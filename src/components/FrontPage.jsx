@@ -15,7 +15,6 @@ const FrontPage = ({ setShow }) => {
   const [initializing, setInitialing] = useState(true);
 
   const handleUserLogin = async () => {
-    setLoading(true);
     await GoogleSignin.hasPlayServices({
       showPlayServicesUpdateDialog: true,
     });
@@ -27,8 +26,7 @@ const FrontPage = ({ setShow }) => {
     return auth()
       .signInWithCredential(googleCredential)
       .then(() => setShow(false))
-      .catch((error) => console.log(error))
-      .finally(() => setLoading(false));
+      .catch((error) => console.log(error));
   };
 
   const handleUserStateChanged = (us) => {
@@ -61,12 +59,11 @@ const FrontPage = ({ setShow }) => {
         </View>
         <View className="flex justify-center items-center space-y-6">
           <Text className="text-4xl text-blue-600 font-bold">
-            Welcome to IShop
+            Welcome to AmzCl
           </Text>
           <View className="space-y-4">
             <TouchableOpacity
               className="bg-blue-600 px-4 py-2 m-auto w-32 text-center rounded-xl"
-              disabled={loading}
               onPress={() => setShow(false)}
             >
               <Text className="text-white font-bold text-center text-lg">
@@ -75,7 +72,6 @@ const FrontPage = ({ setShow }) => {
             </TouchableOpacity>
             <TouchableOpacity
               className="bg-blue-600 px-4 py-2 m-auto w-32 text-center rounded-xl"
-              disabled={loading}
               onPress={handleUserLogin}
             >
               <Text className="text-white font-bold text-center text-lg">
