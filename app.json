@@ -16,7 +16,8 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "bundleIdentifier": "com.melcabo.amazonclone"
     },
     "android": {
       "googleServicesFile": "./google-services.json",
@@ -40,6 +41,12 @@
       "@react-native-google-signin/google-signin",
       "@react-native-firebase/perf",
       "@react-native-firebase/crashlytics"
-    ]
+    ],
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/40a90e01-e017-492d-a885-ccac606dfc6f"
+    }
   }
 }

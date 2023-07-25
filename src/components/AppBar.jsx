@@ -51,7 +51,7 @@ function AppBar() {
           Products
         </AppBarTab>
         <AppBarTab active to="/signin">
-          Sign In
+          Profile
         </AppBarTab>
         <AppBarTab active to="/orders">
           Orders

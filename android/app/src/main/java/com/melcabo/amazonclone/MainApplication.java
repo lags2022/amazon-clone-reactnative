@@ -8,6 +8,7 @@ import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactNativeHost;
 import com.facebook.soloader.SoLoader;
@@ -16,8 +17,6 @@ import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;
 
 import java.util.List;
-
-// import io.invertase.firebase.auth.ReactNativeFirebaseAuthPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -34,14 +33,12 @@ public class MainApplication extends Application implements ReactApplication {
         List<ReactPackage> packages = new PackageList(this).getPackages();
         // Packages that cannot be autolinked yet can be added manually here, for example:
         // packages.add(new MyReactNativePackage());
-        // packages.add(new ReactNativeFirebaseAuthPackage());
-
         return packages;
       }
 
       @Override
       protected String getJSMainModuleName() {
-        return "index";
+        return ".expo/.virtual-metro-entry";
       }
 
       @Override
@@ -53,8 +50,6 @@ public class MainApplication extends Application implements ReactApplication {
       protected Boolean isHermesEnabled() {
         return BuildConfig.IS_HERMES_ENABLED;
       }
-
-
   });
 
   @Override
@@ -66,6 +61,9 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    if (!BuildConfig.REACT_NATIVE_UNSTABLE_USE_RUNTIME_SCHEDULER_ALWAYS) {
+      ReactFeatureFlags.unstable_useRuntimeSchedulerAlways = false;
+    }
     if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
       // If you opted-in for the New Architecture, we load the native entry point for this app.
       DefaultNewArchitectureEntryPoint.load();

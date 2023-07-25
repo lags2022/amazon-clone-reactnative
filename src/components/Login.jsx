@@ -52,7 +52,7 @@ function Login() {
     return subscriber; //para cuando se desmonte , ya no se subscriba a la autenticacion
   }, []);
 
-  if (initializing) return null;
+  if (initializing) return null;//esto me parece que es como un loading
 
   return (
     <View className="flex-1 m-3">
